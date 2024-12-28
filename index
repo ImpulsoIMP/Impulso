@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Pulso</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Token Pulso</h1>
+    </header>
+    <main>
+        <section id="intro">
+            <h2>¿Qué es Pulso?</h2>
+            <p>Pulso es un token revolucionario que está transformando el mercado de las criptomonedas. Con su tecnología avanzada y su comunidad dedicada, Pulso está diseñado para crecer y ofrecer valor a sus usuarios.</p>
+        </section>
+        <section id="benefits">
+            <h2>Beneficios de Pulso</h2>
+            <ul>
+                <li>Transacciones rápidas y seguras</li>
+                <li>Bajos costos de transacción</li>
+                <li>Comunidad activa y en crecimiento</li>
+                <li>Compatibilidad con múltiples plataformas</li>
+            </ul>
+        </section>
+        <section id="roadmap">
+            <h2>Hoja de Ruta</h2>
+            <p>Nuestro plan incluye:</p>
+            <ul>
+                <li>Lanzamiento de la plataforma Pulso</li>
+                <li>Integraciones con socios estratégicos</li>
+                <li>Expansión global</li>
+                <li>Nuevas funcionalidades y mejoras continuas</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Token Pulso. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
