@@ -1,42 +1,150 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Pulso</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Impulso (IMP) - La criptomoneda del futuro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f25, #0078ff);
+            color: #fff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #0a0f25;
+            border-bottom: 2px solid #0078ff;
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        header .logo img {
+            height: 40px;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+        header .logo img:hover {
+            transform: scale(1.3);
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #0078ff;
+            border-radius: 5px;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #0078ff;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 48px;
+            color: #ffcc00;
+        }
+        .hero p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .hero button {
+            background-color: #ffcc00;
+            color: #0a0f25;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.1s;
+        }
+        .hero button:active {
+            transform: scale(0.95);
+        }
+        .connect-wallet {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .connect-wallet button {
+            background-color: #0078ff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .connect-wallet button:hover {
+            background-color: #0056cc;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Token Pulso</h1>
+        <div class="logo">
+            <img src="C:\Users\aleja\Downloads\logoimp.jpeg" alt="Logo Impulso">
+            <div>Impulso (IMP)</div>
+        </div>
+        <nav>
+            <a href="#home">Inicio</a>
+            <a href="https://raydium.io/swap/?inputMint=sol&outputMint=78kHXrS7sFnmEPyEH35Hpv5qLWaDsnpfEoBbWx1yrWFK" target="_blank">Intercambio</a>
+            <a href="#roadmap">Hoja de Ruta</a>
+            <a href="#marketplace">Marketplace</a>
+        </nav>
     </header>
-    <main>
-        <section id="intro">
-            <h2>¿Qué es Pulso?</h2>
-            <p>Pulso es un token revolucionario que está transformando el mercado de las criptomonedas. Con su tecnología avanzada y su comunidad dedicada, Pulso está diseñado para crecer y ofrecer valor a sus usuarios.</p>
-        </section>
-        <section id="benefits">
-            <h2>Beneficios de Pulso</h2>
-            <ul>
-                <li>Transacciones rápidas y seguras</li>
-                <li>Bajos costos de transacción</li>
-                <li>Comunidad activa y en crecimiento</li>
-                <li>Compatibilidad con múltiples plataformas</li>
-            </ul>
-        </section>
-        <section id="roadmap">
-            <h2>Hoja de Ruta</h2>
-            <p>Nuestro plan incluye:</p>
-            <ul>
-                <li>Lanzamiento de la plataforma Pulso</li>
-                <li>Integraciones con socios estratégicos</li>
-                <li>Expansión global</li>
-                <li>Nuevas funcionalidades y mejoras continuas</li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Token Pulso. Todos los derechos reservados.</p>
-    </footer>
+
+    <div class="hero" id="home">
+        <h1>¡Impulsa tu futuro con IMP!</h1>
+        <p>La criptomoneda creada para revolucionar el mundo financiero. Con un suministro limitado de 21,000,000 tokens, Impulso es la opción perfecta para quienes buscan oportunidades a largo plazo.</p>
+        <button onclick="window.open('https://raydium.io/swap/?inputMint=sol&outputMint=78kHXrS7sFnmEPyEH35Hpv5qLWaDsnpfEoBbWx1yrWFK', '_blank')">INTERCAMBIA AHORA</button>
+    </div>
+
+    <div class="connect-wallet">
+        <button id="walletButton" onclick="toggleWallet()">Conectar Wallet</button>
+    </div>
+
+    <script>
+        let walletAddress = null;
+
+        async function toggleWallet() {
+            const button = document.getElementById('walletButton');
+            if (walletAddress) {
+                // Disconnect wallet
+                walletAddress = null;
+                button.textContent = 'Conectar Wallet';
+                alert('Wallet desconectada.');
+            } else {
+                // Connect wallet
+                try {
+                    const response = await window.solana.connect();
+                    walletAddress = response.publicKey.toString();
+                    button.textContent = 'Desconectar Wallet';
+                    alert(`Wallet conectada: ${walletAddress}`);
+                } catch (err) {
+                    console.error(err);
+                    alert('Error al conectar la wallet.');
+                }
+            }
+        }
+    </script>
 </body>
 </html>
