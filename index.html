@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulso (IMP) - La criptomoneda del futuro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0f25, #0078ff);
+            color: #fff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #0a0f25;
+            border-bottom: 2px solid #0078ff;
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        header .logo img {
+            height: 40px;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+        header .logo img:hover {
+            transform: scale(1.3);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #0078ff;
+            border-radius: 5px;
+        }
+        #walletButton {
+            background-color: #0078ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #walletButton:hover {
+            background-color: #0056cc;
+        }
+        #walletButton.disconnect:hover {
+            background-color: #ff4444;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('https://github.com/ImpulsoIMP/Impulso/blob/main/hero1-bg.jpg') no-repeat center center / cover;
+        }
+        .hero h1 {
+            font-size: 48px;
+            color: #ffcc00;
+        }
+        .hero p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .hero .cta-button {
+            background-color: #ffcc00;
+            color: #0a0f25;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .hero .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ffcc00;
+        }
+        .hero .cta-button:active {
+            transform: scale(0.95);
+        }
+        .copy-section {
+            margin-top: 20px;
+        }
+        .copy-section p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .copy-section button {
+            background-color: #0078ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .copy-section button:hover {
+            background-color: #0056cc;
+        }
+        .section {
+            padding: 50px 20px;
+        }
+        .roadmap {
+            text-align: center;
+            background-color: #0a0f25;
+             background: url('https://github.com/ImpulsoIMP/Impulso/blob/main/hero-bg.png') no-repeat center center / cover; /* Cambiar por imagen dinámica */
+            /* Dimensiones recomendadas: 1200x600px */
+            border-radius: 10px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .roadmap ul {
+            list-style: none;
+            padding: 0;
+        }
+        .roadmap li {
+            margin: 10px 0;
+        }
+         .motivational {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(21,118,241,0.8);
+            border-radius: 10px;
+            max-width: 800px;
+            font-size: 18px;
+            color: #fff;
+        }
+         .motivational2 {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(21,118,241,0.8);
+            border-radius: 10px;
+            max-width: 800px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .marketplace {
+            text-align: center;
+            background: url('https://github.com/ImpulsoIMP/Impulso/blob/main/marketplace-bg.png') no-repeat center center / cover; /* Cambiar por imagen dinámica */
+            /* Dimensiones recomendadas: 1200x600px */
+            border-radius: 10px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        footer {
+            background-color: #0a0f25;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #0078ff;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        footer .socials {
+            margin: 10px 0;
+        }
+        footer .socials a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://github.com/ImpulsoIMP/Impulso/blob/main/logoimp.jpeg" alt="Logo Impulso">
+            <div>Impulso (IMP)</div>
+        </div>
+        <nav>
+            <a href="#home">Inicio</a>
+            <a href="https://raydium.io/swap/?inputMint=sol&outputMint=78kHXrS7sFnmEPyEH35Hpv5qLWaDsnpfEoBbWx1yrWFK" target="_blank">Intercambio</a>
+            <a href="#roadmap">Hoja de Ruta</a>
+            <a href="#marketplace">Marketplace</a>
+            <button id="walletButton" onclick="toggleWallet()">Conectar Wallet</button>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <h1><b>¡Impulsa tu futuro con IMP!</b></h1>
+        <p><b>El token creado para revolucionar el mundo financiero. Con un suministro limitado de 21,000,000 tokens, Impulso es la opción perfecta para quienes buscan oportunidades a largo plazo.</b></p>
+        <button class="cta-button" onclick="window.open('https://raydium.io/swap/?inputMint=sol&outputMint=78kHXrS7sFnmEPyEH35Hpv5qLWaDsnpfEoBbWx1yrWFK', '_blank')">INTERCAMBIA AHORA</button>
+        <div class="copy-section">
+            <p><b>Dirección del Token:</b></p>
+            <p id="tokenAddress"><b>78kHXrS7sFnmEPyEH35Hpv5qLWaDsnpfEoBbWx1yrWFK</b></p>
+            <button onclick="copyTokenAddress()">Copiar Dirección</button>
+        </div>
+        <div class="motivational">
+            <p style="margin-top: 20px; font-weight: bold;">¡Dale liquidez al token IMP y sé parte del futuro de la blockchain en Solana!</p>
+        "Impulso (IMP) no es solo un token; es el vehículo para transformar sueños en realidad. Con un suministro limitado y el respaldo de la comunidad, cada token es una pieza clave en un proyecto diseñado para revolucionar el futuro financiero. Tu apoyo es crucial para dar el próximo gran salto. ¡Sé parte del cambio!"
+    </div>
+    </div>
+
+    <div class="section roadmap" id="roadmap">
+         <div class="motivational2">
+        <h2>Hoja de Ruta</h2>
+        <ul>
+            <li><strong>Q1 2025:</strong> Lanzamiento inicial y registro en intercambios descentralizados.</li>
+            <li><strong>Q2 2025:</strong> Creación de marketplace para holders de IMP.</li>
+            <li><strong>Q3 2025:</strong> Implementación de staking y recompensas exclusivas.</li>
+            <li><strong>Q4 2025:</strong> Alianzas estratégicas con proyectos de la blockchain Solana.</li>
+        </ul>
+    </div>
+    </div>
+    <div class="section marketplace" id="marketplace">
+        <div class="motivational2">
+        <h2>Marketplace</h2><strong>¡Muy pronto!</strong>
+        <p>¡Prepárate para algo increíble!
+Estamos emocionados de anunciar que muy pronto lanzaremos un marketplace exclusivo diseñado especialmente para los holders de IMP, nuestra criptomoneda. Este será un espacio único donde podrás explorar, comprar y vender artículos digitales como NFTs, productos exclusivos y servicios dentro de un ecosistema innovador.</p>
+
+<p>Nuestro marketplace estará construido sobre la blockchain de Solana, lo que garantiza transacciones rápidas, seguras y de bajo costo. Queremos que este espacio no solo sea un lugar para el comercio, sino también una comunidad vibrante donde los holders de IMP puedan interactuar, colaborar y construir juntos el futuro del proyecto.</p>
+
+<p>Los primeros en unirse disfrutarán de beneficios exclusivos, como acceso prioritario a NFTs de edición limitada, promociones especiales y recompensas diseñadas para nuestros seguidores más fieles. Además, este marketplace marcará un paso crucial en nuestra hoja de ruta, fortaleciendo el uso y la adopción de IMP en el mundo real.</p>
+
+<p>¡No pierdas la oportunidad de ser parte de esta revolución!
+Mantente atento a nuestras novedades y acompáñanos en este emocionante viaje hacia el futuro del comercio digital. Tu apoyo no solo impulsa el proyecto, sino que también ayuda a consolidar el impacto de IMP en el ecosistema blockchain.</p>
+
+<p>¡El futuro de IMP está lleno de oportunidades, y queremos que seas parte de ellas!</p>
+    </div>
+     </div>
+    <footer>
+        <p>© 2024 Impulso (IMP). Todos los derechos reservados.</p>
+        <div class="socials">
+            <a href="https://x.com/impulsoimp" target="_blank">Twitter</a>
+            <a href="https://t.me/ImpulsoIMP" target="_blank">Telegram Canal</a>
+            <a href="https://t.me/Impulso_IMP" target="_blank">Telegram Comunidad</a>
+        </div>
+    </footer>
+
+    <script>
+        let walletAddress = null;
+
+        async function toggleWallet() {
+            const button = document.getElementById('walletButton');
+            if (walletAddress) {
+                walletAddress = null;
+                button.textContent = 'Conectar Wallet';
+                button.classList.remove('disconnect');
+                alert('Wallet desconectada.');
+            } else {
+                try {
+                    const provider = window.solana;
+                    if (!provider || !provider.isPhantom) {
+                        alert('Por favor, instala Phantom Wallet para continuar.');
+                        return;
+                    }
+                    const response = await provider.connect();
+                    walletAddress = response.publicKey.toString();
+                    button.textContent = walletAddress.substring(0, 6) + '...' + walletAddress.slice(-4);
+                    button.classList.add('disconnect');
+                } catch (err) {
+                    console.error(err);
+                    alert('Error al conectar la wallet.');
+                }
+            }
+        }
+
+        function copyTokenAddress() {
+            const tokenAddress = document.getElementById('tokenAddress').textContent;
+            navigator.clipboard.writeText(tokenAddress).then(() => {
+                alert('¡Dirección del token copiada al portapapeles!');
+            }).catch(err => {
+                console.error('Error al copiar la dirección:', err);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
