@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://raw.githubusercontent.com/ImpulsoIMP/Impulso/d00394ce303287456dd1cc1655af245e77741596/logoimp.jpeg" type="image/x-icon">
     <title>Impulso (IMP) - La criptomoneda del futuro</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js"></script>
@@ -124,8 +125,7 @@
         .roadmap {
             text-align: center;
             background-color: #0a0f25;
-             background: url('https://github.com/ImpulsoIMP/Impulso/raw/d00394ce303287456dd1cc1655af245e77741596/hero-bg.png') no-repeat center center / cover; /* Cambiar por imagen dinámica */
-            /* Dimensiones recomendadas: 1200x600px */
+             background: url('https://github.com/ImpulsoIMP/Impulso/raw/d00394ce303287456dd1cc1655af245e77741596/hero-bg.png') no-repeat center center / cover;
             border-radius: 10px;
             margin: 20px 0;
             padding: 20px;
@@ -159,8 +159,7 @@
         }
         .marketplace {
             text-align: center;
-            background: url('https://raw.githubusercontent.com/ImpulsoIMP/Impulso/d00394ce303287456dd1cc1655af245e77741596/marketplace-bg.png') no-repeat center center / cover; /* Cambiar por imagen dinámica */
-            /* Dimensiones recomendadas: 1200x600px */
+            background: url('https://raw.githubusercontent.com/ImpulsoIMP/Impulso/d00394ce303287456dd1cc1655af245e77741596/marketplace-bg.png') no-repeat center center / cover;
             border-radius: 10px;
             margin: 20px 0;
             padding: 20px;
@@ -184,6 +183,50 @@
             text-decoration: none;
             font-size: 20px;
         }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #0a0f25;
+                padding: 20px;
+                border-radius: 10px;
+                width: 200px;
+            }
+            nav a {
+                font-size: 18px;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: block;
+                background-color: #0078ff;
+                color: #fff;
+                border: none;
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            header .logo {
+                flex: 1;
+            }
+        }
+
+        /* Large Screens */
+        @media (min-width: 769px) {
+            nav {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -192,7 +235,8 @@
             <img src="https://raw.githubusercontent.com/ImpulsoIMP/Impulso/d00394ce303287456dd1cc1655af245e77741596/logoimp.jpeg" alt="Logo Impulso">
             <div>Impulso (IMP)</div>
         </div>
-        <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav id="menu">
             <a href="#home">Inicio</a>
             <a href="https://raydium.io/swap/?inputMint=sol&outputMint=78kHXrS7sFnmEPyEH35Hpv5qLWaDsnpfEoBbWx1yrWFK" target="_blank">Intercambio</a>
             <a href="#roadmap">Hoja de Ruta</a>
@@ -230,7 +274,7 @@
     <div class="section marketplace" id="marketplace">
         <div class="motivational2">
         <h2>Marketplace</h2><strong>¡Muy pronto!</strong>
-        <p>¡Prepárate para algo increíble!
+         <p>¡Prepárate para algo increíble!
 Estamos emocionados de anunciar que muy pronto lanzaremos un marketplace exclusivo diseñado especialmente para los holders de IMP, nuestra criptomoneda. Este será un espacio único donde podrás explorar, comprar y vender artículos digitales como NFTs, productos exclusivos y servicios dentro de un ecosistema innovador.</p>
 
 <p>Nuestro marketplace estará construido sobre la blockchain de Solana, lo que garantiza transacciones rápidas, seguras y de bajo costo. Queremos que este espacio no solo sea un lugar para el comercio, sino también una comunidad vibrante donde los holders de IMP puedan interactuar, colaborar y construir juntos el futuro del proyecto.</p>
@@ -288,10 +332,11 @@ Mantente atento a nuestras novedades y acompáñanos en este emocionante viaje h
                 console.error('Error al copiar la dirección:', err);
             });
         }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
     </script>
 </body>
 </html>
-
-
-
-
